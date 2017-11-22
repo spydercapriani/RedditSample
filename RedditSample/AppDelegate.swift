@@ -8,15 +8,29 @@
 
 import UIKit
 import CoreData
+import CleanroomLogger
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PlaceholderDataContainer {
 
     var window: UIWindow?
-
+    var container: DataContainer = DataContainer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let xcodeConfiguration = XcodeLogConfiguration(
+            minimumSeverity: .info,
+            debugMode: true,
+            verboseDebugMode: false,
+            stdStreamsMode: .useAsFallback,
+            mimicOSLogOutput: false,
+            showCallSite: true,
+            filters: []
+        )
+        Log.enable(configuration: xcodeConfiguration)
+        Log.message(.info, message: "Logging Enabled")
+        
         return true
     }
 
