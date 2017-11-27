@@ -16,11 +16,21 @@ class MainViewController: UIViewController, ViewModelContainer, canBlockView {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: ListingsViewModel = ListingsViewModel()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MainViewController.handleRefresh(refreshControl:)), for: .valueChanged)
+        
+        return refreshControl
+    }()
 
     // MARK: - View Controller / Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.addSubview(refreshControl)
+        tableView.allowsMultipleSelection = false
         
         // Do any additional setup after loading the view.
         self.blockUI()
@@ -80,5 +90,13 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let url = URL(string: listing.link!)!
         let svc = SFSafariViewController(url: url)
         present(svc, animated: true, completion: nil)
+    }
+    
+    // MARK: - Table Refresh
+    @objc func handleRefresh(refreshControl: UIRefreshControl) {
+        viewModel.loadData {
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
+        }
     }
 }
