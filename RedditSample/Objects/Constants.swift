@@ -15,30 +15,22 @@ internal enum CellIdentifier: String {
     case cell
 }
 
-internal enum TableSection: Int {
-    case top = 0
-    case new = 1
-    case rising = 2
-    case hot = 3
-    case controversial = 4
-    
-    static let allValues: [TableSection] = [
-        .top,
-        .new,
-        .rising,
-        .hot,
-        .controversial
-    ]
-    
+internal enum TableConstants {
     static let SectionHeaderHeight: CGFloat = 25
+}
+
+struct RedditURLS {
+    static let redditBaseURL = "https://www.reddit.com/r/"
     
-    func title() -> String {
-        switch self {
-            case .top: return "Top"
-            case .new: return "New"
-            case .hot: return "Hot"
-            case .rising: return "Rising"
-            case .controversial: return "Controversial"
-        }
+    enum Categories: String {
+        case top = "Top"
+        case new = "New"
+        case hot = "Hot"
+        case rising = "Rising"
+        case controversial = "Controversial"
+        
+        static let allValues: [Categories] = [top, new, hot, rising, controversial]
     }
+    
+    
 }

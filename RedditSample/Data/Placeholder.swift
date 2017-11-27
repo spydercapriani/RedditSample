@@ -8,15 +8,15 @@
 
 import Foundation
 
-typealias RedditListing = (title: String?, link: String?)
+typealias RedditListing = (title: String, link: String)
 
 protocol PlaceholderDataContainer {
     var container: DataContainer { get set }
 }
 
 class DataContainer {
-    var data: [String: [RedditListing]] = [
-        "Top": [
+    var data: [RedditURLS.Categories: [RedditListing]] = [
+        .top: [
             RedditListing(
                 title: "I wrote our U.S Rep. Roger Williams several months ago and received a reply today.",
                 link: "https://www.reddit.com/r/Austin/comments/7ejw2t/i_wrote_our_us_rep_roger_williams_several_months/"
@@ -42,7 +42,7 @@ class DataContainer {
                 link: "https://www.reddit.com/r/Austin/comments/7elu5m/ut_student_who_said_im_a_ut_student_you_cant/"
             )
         ],
-        "Hot": [
+        .hot: [
             RedditListing(
                 title: "Lets use our power to do what we can to \"battle for the net\"",
                 link: "https://www.reddit.com/r/Austin/comments/7eo7p2/lets_use_our_power_to_do_what_we_can_to_battle/"
@@ -64,7 +64,7 @@ class DataContainer {
                 link: "https://www.reddit.com/r/Austin/comments/7els55/woman_uses_children_to_shoplift_at_macys_at_the/"
             )
         ],
-        "New": [
+        .new: [
             RedditListing(
                 title: "This is how much more money you'll need for a down payment in Austin in 2018",
                 link: "https://www.reddit.com/r/Austin/comments/7ejcl5/this_is_how_much_more_money_youll_need_for_a_down/"
@@ -90,7 +90,7 @@ class DataContainer {
                 link: "https://www.reddit.com/r/Austin/comments/7eige7/peanutfree_bakery_suggestion/"
             )
         ],
-        "Controversial": [
+        .controversial: [
             RedditListing(
                 title: "What can we do to fight the FCC???",
                 link: "https://www.reddit.com/r/Austin/comments/7enek8/what_can_we_do_to_fight_the_fcc/"
@@ -112,7 +112,7 @@ class DataContainer {
                 link: "https://www.reddit.com/r/Austin/comments/7eiqcn/remember_that_terrence_malick_film_that_was_being/"
             )
         ],
-        "Rising": [
+        .rising: [
             RedditListing(
                 title: "Has anyone bought a house from Priority Texas Homes?",
                 link: "https://www.reddit.com/r/Austin/comments/7el922/has_anyone_bought_a_house_from_priority_texas/"

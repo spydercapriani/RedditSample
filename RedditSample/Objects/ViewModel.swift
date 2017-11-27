@@ -17,8 +17,14 @@ class ViewModel {
         return placeholderContainer?.container
     }
     
+    var networkContainer: RedditDataContainer?
+    var redditData: RedditData? {
+        return networkContainer?.redditData
+    }
+    
     // MARK: - Initializer
-    init(placeholderContainer: PlaceholderDataContainer? = UIApplication.shared.delegate as? AppDelegate) {
+    init(placeholderContainer: PlaceholderDataContainer? = UIApplication.shared.delegate as? AppDelegate, networkContainer: RedditDataContainer? = UIApplication.shared.delegate as? AppDelegate) {
         self.placeholderContainer = placeholderContainer
+        self.networkContainer = networkContainer
     }
 }

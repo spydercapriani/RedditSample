@@ -12,14 +12,32 @@ import CleanroomLogger
 class ListingsViewModel: ViewModel {
     
     // MARK: - Properties
-    var listings: [String: [RedditListing]] {
-        return dataContainer?.data ?? ["nil": []]
+    var listings: [RedditURLS.Categories: [RedditListing]] {
+        return networkContainer?.redditData.redditListings ?? [
+            .top: [],
+            .new: [],
+            .hot: [],
+            .rising: [],
+            .controversial: []
+        ]
+    }
+    
+    var subreddit: String = "Austin"
+    
+    func loadData(completionHandler: @escaping () -> Void) {
+        networkContainer?.redditData.fetchSubreddit(for: self.subreddit, completionHandler: { (hasErrors, errors) in
+            if hasErrors {
+                Log.value(.error, value: errors)
+            }
+            Log.value(.debug, value: self.listings)
+            completionHandler()
+        })
     }
     
     // MARK: - Reddit Listing Data
     
-    func getListing(for list: TableSection, at indexPath: IndexPath) -> (title: String?, link: String?) {
-        let listing: RedditListing? = listings[list.title()]?[indexPath.row]
+    func getListing(for category: RedditURLS.Categories, at indexPath: IndexPath) -> (title: String?, link: String?) {
+        let listing: RedditListing? = listings[category]?[indexPath.row]
         return (listing?.title, listing?.link)
     }
 }
