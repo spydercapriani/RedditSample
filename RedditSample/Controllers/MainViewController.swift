@@ -13,6 +13,8 @@ import CleanroomLogger
 class MainViewController: UIViewController, ViewModelContainer, canBlockView {
     
     // MARK: - Properties
+    
+    @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: ListingsViewModel = ListingsViewModel()
@@ -28,9 +30,9 @@ class MainViewController: UIViewController, ViewModelContainer, canBlockView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navTitle.title = "/r/\(viewModel.subreddit)"
         
         tableView.addSubview(refreshControl)
-        tableView.allowsMultipleSelection = false
         
         // Do any additional setup after loading the view.
         self.blockUI()
@@ -44,6 +46,33 @@ class MainViewController: UIViewController, ViewModelContainer, canBlockView {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
+    // MARK: - Button Actions
+    
+    @IBAction func searchAction(_ sender: Any) {
+        let alertController = UIAlertController(title: "Change Subreddit", message: "Want to follow a different Subreddit?", preferredStyle: .alert)
+        
+        alertController.addTextField { (subredditTextField: UITextField!) in
+            subredditTextField.placeholder = "Enter Subreddit Here"
+        }
+        
+        let followAction = UIAlertAction(title: "Follow", style: .default) { (alert) in
+            let subredditTextField = alertController.textFields![0] as UITextField
+            
+            self.viewModel.subreddit = subredditTextField.text!.isEmpty ? self.viewModel.subreddit : subredditTextField.text!
+            self.viewDidLoad()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
+        
+        alertController.addAction(followAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true) {
+            self.tableView.reloadData()
+        }
+    }
+    
 }
 
 // MARK: - TableView Functions

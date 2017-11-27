@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="SE1-WC-CRe" style="IBUITableViewCellStyleDefault" id="O1t-st-eM0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="SE1-WC-CRe" style="IBUITableViewCellStyleDefault" id="O1t-st-eM0">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O1t-st-eM0" id="R1U-bv-aeH">
@@ -53,9 +53,14 @@
                         <string key="title" base64-UTF8="YES">
 EC9yL0F1c3Rpbg
 </string>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RGd-s1-VCe"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="RGd-s1-VCe">
+                            <connections>
+                                <action selector="searchAction:" destination="BYZ-38-t0r" id="qOf-kl-wwt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="navTitle" destination="CUa-41-HAM" id="EqG-VN-TQq"/>
                         <outlet property="tableView" destination="peN-ME-H74" id="FTM-Bn-4Y7"/>
                     </connections>
                 </viewController>
