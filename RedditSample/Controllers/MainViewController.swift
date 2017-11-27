@@ -101,21 +101,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         return view
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let category = RedditURLS.Categories.allValues[indexPath.section]
-        
-        let listing = viewModel.getListing(for: category, at: indexPath)
-        cell.textLabel?.text = listing.title
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableConstants.CellIdentifiers.cell.rawValue, for: indexPath)
+        let listing = viewModel.getListing(for: indexPath)
+        
+        cell.textLabel?.text = listing.title
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = RedditURLS.Categories.allValues[indexPath.section]
-        
-        let listing = viewModel.getListing(for: category, at: indexPath)
+        let listing = viewModel.getListing(for: indexPath)
         let url = URL(string: listing.link!)!
         let svc = SFSafariViewController(url: url)
         present(svc, animated: true, completion: nil)

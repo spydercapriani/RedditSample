@@ -36,7 +36,8 @@ class ListingsViewModel: ViewModel {
     
     // MARK: - Reddit Listing Data
     
-    func getListing(for category: RedditURLS.Categories, at indexPath: IndexPath) -> (title: String?, link: String?) {
+    func getListing(for indexPath: IndexPath) -> (title: String?, link: String?) {
+        let category = RedditURLS.Categories.allValues[indexPath.section]
         let listing: RedditListing? = listings[category]?[indexPath.row]
         return (listing?.title, listing?.link)
     }

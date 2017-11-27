@@ -9,14 +9,12 @@
 import Foundation
 import UIKit
 
-
-
-internal enum CellIdentifier: String {
-    case cell
-}
-
 internal enum TableConstants {
     static let SectionHeaderHeight: CGFloat = 25
+    
+    enum CellIdentifiers: String {
+        case cell
+    }
 }
 
 struct RedditURLS {
