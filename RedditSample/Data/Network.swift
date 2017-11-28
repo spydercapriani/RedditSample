@@ -52,13 +52,11 @@ class RedditData {
                 }
                 
                 self.redditListings[category] = categoryList
-                Log.value(.verbose, value: self.redditListings[category])
                 redditRequests.leave()
             })
         }
         
         redditRequests.notify(queue: DispatchQueue.main, work: DispatchWorkItem(block: {
-            Log.value(.verbose, value: self.redditListings)
             completionHandler(containsErrors, errorList)
         }))
     }
@@ -87,10 +85,6 @@ class RedditData {
                         thumbnail = nil
                     }
                     let listing = RedditListing(title: title, link: link, thumbnail: thumbnail)
-                    Log.message(.verbose, message: "\(category.rawValue): \(title) - \(link) - \(thumbnail ?? "")\n")
-                    Log.message(.verbose, message: "Title: \(title)")
-                    Log.message(.verbose, message: "Link: \(link)")
-                    Log.message(.verbose, message: "Thumbnail: \(thumbnail ?? "none")")
                     listings.append(listing)
                 }
                 completionHandler(listings, nil)
