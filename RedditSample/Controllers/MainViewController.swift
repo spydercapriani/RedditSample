@@ -105,10 +105,13 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableConstants.CellIdentifiers.cell.rawValue, for: indexPath) as! RedditLinkCell
         let listing = viewModel.getListing(for: indexPath)
+        let placeholder = UIImage(named: "placeholderImage")
         
         cell.titleLabel.text = listing.title
         if let urlString = URL(string: listing.thumbnail ?? "") {
-            cell.thumbnailImage.af_setImage(withURL: urlString)
+            cell.thumbnailImage.af_setImage(withURL: urlString, placeholderImage: placeholder)
+        }else {
+            cell.thumbnailImage.image = placeholder
         }
         
         return cell
