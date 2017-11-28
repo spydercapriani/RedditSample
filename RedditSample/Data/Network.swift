@@ -47,6 +47,7 @@ class RedditData {
                 if let categoryError = error {
                     errorList[category]? = categoryError
                     containsErrors = true
+                    Log.value(.error, value: categoryError)
                 }
                 
                 self.redditListings[category] = categoryList
@@ -78,7 +79,7 @@ class RedditData {
             case .success(let value):
                 let json = JSON(value)
                 for child in json["data"]["children"].arrayValue {
-                    let title = child["data"]["title"].stringValue
+                    let title = child["data"]["title"].stringValue.html2String
                     let link = "https://www.reddit.com" + child["data"]["permalink"].stringValue
                     let listing = RedditListing(title: title, link: link)
                     Log.message(.verbose, message: "\(category.rawValue): \(title) - \(link)\n")
