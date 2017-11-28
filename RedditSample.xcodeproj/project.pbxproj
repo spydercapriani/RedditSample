@@ -10,6 +10,7 @@
 		232500DF09952212DA6CE819 /* Pods_RedditSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A5EFF39013CB7E9709CCC69 /* Pods_RedditSampleTests.framework */; };
 		3D5EBDEB1FCC757400A3F6F4 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EBDEA1FCC757400A3F6F4 /* Network.swift */; };
 		3D5EBDF11FCCB2F400A3F6F4 /* BlockingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EBDF01FCCB2F400A3F6F4 /* BlockingContainer.swift */; };
+		3D5EBDF51FCDC3AA00A3F6F4 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5EBDF41FCDC3AA00A3F6F4 /* Models.swift */; };
 		3D9E8ADF1FC52470002AF5CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9E8ADE1FC52470002AF5CC /* AppDelegate.swift */; };
 		3D9E8AE41FC52470002AF5CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9E8AE21FC52470002AF5CC /* Main.storyboard */; };
 		3D9E8AE71FC52470002AF5CC /* RedditSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D9E8AE51FC52470002AF5CC /* RedditSample.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 		3A5EFF39013CB7E9709CCC69 /* Pods_RedditSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RedditSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D5EBDEA1FCC757400A3F6F4 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		3D5EBDF01FCCB2F400A3F6F4 /* BlockingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockingContainer.swift; sourceTree = "<group>"; };
+		3D5EBDF41FCDC3AA00A3F6F4 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		3D9E8ADB1FC52470002AF5CC /* RedditSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9E8ADE1FC52470002AF5CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9E8AE31FC52470002AF5CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				3D9E8B151FC5390D002AF5CC /* Constants.swift */,
 				3D9E8B681FC567A9002AF5CC /* ViewModel.swift */,
+				3D5EBDF41FCDC3AA00A3F6F4 /* Models.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5EBDF51FCDC3AA00A3F6F4 /* Models.swift in Sources */,
 				3D9E8B131FC52E15002AF5CC /* MainViewController.swift in Sources */,
 				3D9E8B5D1FC56096002AF5CC /* Placeholder.swift in Sources */,
 				3D9E8B731FC56C35002AF5CC /* ViewModelContainer.swift in Sources */,

@@ -11,8 +11,6 @@
 
 import Foundation
 
-typealias RedditListing = (title: String, link: String)
-
 protocol PlaceholderDataContainer {
     var container: DataContainer { get set }
 }

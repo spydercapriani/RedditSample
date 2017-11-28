@@ -22,7 +22,7 @@ class ListingsViewModel: ViewModel {
         ]
     }
     
-    var subreddit: String = "Austin"
+    var subreddit: String = "Austin" // Default value for Subreddit
     
     /// Loads Data from Network
     ///
