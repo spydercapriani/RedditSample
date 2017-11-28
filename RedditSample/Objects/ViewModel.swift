@@ -12,11 +12,15 @@ import UIKit
 class ViewModel {
     
     // MARK: - Properties
+    
+    
+    /// Only here for example purposes
     var placeholderContainer: PlaceholderDataContainer?
     var dataContainer: DataContainer? {
         return placeholderContainer?.container
     }
     
+    /// Network Container Singletons
     var networkContainer: RedditDataContainer?
     var redditData: RedditData? {
         return networkContainer?.redditData

@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PlaceholderDataContainer,
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        ///                         Cleanroom Logger Code                                        ///
         let xcodeConfiguration = XcodeLogConfiguration(
             minimumSeverity: .info,
             debugMode: true,
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PlaceholderDataContainer,
         )
         Log.enable(configuration: xcodeConfiguration)
         Log.message(.info, message: "Logging Enabled")
-        
+        ///                         End Cleanroom Logger Code                                   ///
         return true
     }
 

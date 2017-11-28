@@ -83,7 +83,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let category = RedditURLS.Categories.allValues[section]
+        let category = RedditConstants.Categories.allValues[section]
         return (viewModel.listings[category]?.count)!
     }
     
@@ -94,7 +94,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         label.font = UIFont.boldSystemFont(ofSize: 15)
         label.textColor = UIColor.black
         
-        let category = RedditURLS.Categories.allValues[section]
+        let category = RedditConstants.Categories.allValues[section]
         label.text = category.rawValue
         
         view.addSubview(label)

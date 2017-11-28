@@ -17,7 +17,7 @@ internal enum TableConstants {
     }
 }
 
-struct RedditURLS {
+struct RedditConstants {
     static let redditBaseURL = "https://www.reddit.com/r/"
     
     enum Categories: String {

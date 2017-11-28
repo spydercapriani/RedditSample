@@ -16,7 +16,7 @@ protocol RedditDataContainer {
 }
 
 class RedditData {
-    var redditListings: [RedditURLS.Categories: [RedditListing]] = [
+    var redditListings: [RedditConstants.Categories: [RedditListing]] = [
         .top: [],
         .new: [],
         .hot: [],
@@ -24,10 +24,15 @@ class RedditData {
         .controversial: []
     ]
     
-    func fetchSubreddit(for subreddit: String, completionHandler: @escaping (Bool, [RedditURLS.Categories: Error?]) -> ()) {
-        let url = RedditURLS.redditBaseURL + subreddit
+    /// Performs fetch for all categories of a given Subreddit
+    ///
+    /// - Parameters:
+    ///   - subreddit: Subreddit Name
+    ///   - completionHandler: Returns error check bool and error list from network calls
+    func fetchSubreddit(for subreddit: String, completionHandler: @escaping (Bool, [RedditConstants.Categories: Error?]) -> ()) {
+        let url = RedditConstants.redditBaseURL + subreddit
         var containsErrors = false
-        var errorList: [RedditURLS.Categories: Error?] = [
+        var errorList: [RedditConstants.Categories: Error?] = [
             .top: nil,
             .new: nil,
             .hot: nil,
@@ -36,7 +41,7 @@ class RedditData {
         ]
         
         let redditRequests = DispatchGroup()
-        for category in RedditURLS.Categories.allValues {
+        for category in RedditConstants.Categories.allValues {
             redditRequests.enter()
             fetchRedditLinks(for: url, category: category, completionHandler: { (categoryList, error) in
                 if let categoryError = error {
@@ -56,7 +61,15 @@ class RedditData {
         }))
     }
     
-    private func fetchRedditLinks(for url: String, category: RedditURLS.Categories, completionHandler: @escaping ([RedditListing], Error?) -> ()) {
+    /// Performs network call to specified URL for a given category.
+    /// Receives & parses returning JSON. Turning it into an instance
+    /// of RedditListing.
+    ///
+    /// - Parameters:
+    ///   - url: Subreddit URL
+    ///   - category: Subreddit Category
+    ///   - completionHandler: Returns array of Reddit Listings or an Error
+    private func fetchRedditLinks(for url: String, category: RedditConstants.Categories, completionHandler: @escaping ([RedditListing], Error?) -> ()) {
         var listings: [RedditListing] = []
         let jsonURL = "\(url)/\(category.rawValue.lowercased()).json"
         Log.message(.info, message: "Fetching links for \(category.rawValue)")

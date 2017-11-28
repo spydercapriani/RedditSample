@@ -12,7 +12,7 @@ import CleanroomLogger
 class ListingsViewModel: ViewModel {
     
     // MARK: - Properties
-    var listings: [RedditURLS.Categories: [RedditListing]] {
+    var listings: [RedditConstants.Categories: [RedditListing]] {
         return networkContainer?.redditData.redditListings ?? [
             .top: [],
             .new: [],
@@ -24,6 +24,9 @@ class ListingsViewModel: ViewModel {
     
     var subreddit: String = "Austin"
     
+    /// Loads Data from Network
+    ///
+    /// - Parameter completionHandler: Allow for actions to occur after network call finishes
     func loadData(completionHandler: @escaping () -> Void) {
         networkContainer?.redditData.fetchSubreddit(for: self.subreddit, completionHandler: { (hasErrors, errors) in
             if hasErrors {
@@ -36,8 +39,12 @@ class ListingsViewModel: ViewModel {
     
     // MARK: - Reddit Listing Data
     
+    /// Fetches instance of Reddit Listing from Data store
+    ///
+    /// - Parameter indexPath: Tableview Index Path
+    /// - Returns: Reddit Listing
     func getListing(for indexPath: IndexPath) -> (title: String?, link: String?) {
-        let category = RedditURLS.Categories.allValues[indexPath.section]
+        let category = RedditConstants.Categories.allValues[indexPath.section]
         let listing: RedditListing? = listings[category]?[indexPath.row]
         return (listing?.title, listing?.link)
     }

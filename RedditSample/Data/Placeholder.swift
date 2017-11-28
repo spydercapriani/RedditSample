@@ -2,6 +2,9 @@
 //  Placeholder.swift
 //  RedditSample
 //
+//  This file only serves to hold fake temporary data that mimics what it would receive
+//  from the network.
+//
 //  Created by Danny Gilbert on 11/22/17.
 //  Copyright © 2017 Danny Gilbert. All rights reserved.
 //
@@ -15,7 +18,7 @@ protocol PlaceholderDataContainer {
 }
 
 class DataContainer {
-    var data: [RedditURLS.Categories: [RedditListing]] = [
+    var data: [RedditConstants.Categories: [RedditListing]] = [
         .top: [
             RedditListing(
                 title: "I wrote our U.S Rep. Roger Williams several months ago and received a reply today.",
