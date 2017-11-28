@@ -7,6 +7,7 @@ target 'RedditSample' do
 
   # Pods for RedditSample
   pod 'Alamofire'
+  pod 'AlamofireImage'
   pod 'SwiftyJSON'
   pod 'CleanroomLogger'
 

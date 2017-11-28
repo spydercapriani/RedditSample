@@ -18,7 +18,11 @@ let request = Alamofire.request(url).responseJSON(completionHandler: { (response
         for child in json["data"]["children"].arrayValue {
             let title = child["data"]["title"].stringValue
             let link = "https://www.reddit.com" + child["data"]["permalink"].stringValue
-            print("\(title)\n\(link)\n")
+            var thumbnail = child["data"]["thumbnail"].string
+            if thumbnail == "self" {
+                thumbnail = nil
+            }
+            print("\(title)\n\(link)\n\(thumbnail)\n")
         }
     case .failure(let error):
         print(error)

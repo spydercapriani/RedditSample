@@ -30,6 +30,7 @@ class RedditData {
     ///   - subreddit: Subreddit Name
     ///   - completionHandler: Returns error check bool and error list from network calls
     func fetchSubreddit(for subreddit: String, completionHandler: @escaping (Bool, [RedditConstants.Categories: Error?]) -> ()) {
+        Log.message(.info, message: "Fetching links for Subreddit /r/\(subreddit)")
         let url = RedditConstants.redditBaseURL + subreddit
         var containsErrors = false
         var errorList: [RedditConstants.Categories: Error?] = [
@@ -81,8 +82,15 @@ class RedditData {
                 for child in json["data"]["children"].arrayValue {
                     let title = child["data"]["title"].stringValue.html2String
                     let link = "https://www.reddit.com" + child["data"]["permalink"].stringValue
-                    let listing = RedditListing(title: title, link: link)
-                    Log.message(.verbose, message: "\(category.rawValue): \(title) - \(link)\n")
+                    var thumbnail = child["data"]["thumbnail"].string
+                    if thumbnail == "self" {
+                        thumbnail = nil
+                    }
+                    let listing = RedditListing(title: title, link: link, thumbnail: thumbnail)
+                    Log.message(.verbose, message: "\(category.rawValue): \(title) - \(link) - \(thumbnail ?? "")\n")
+                    Log.message(.verbose, message: "Title: \(title)")
+                    Log.message(.verbose, message: "Link: \(link)")
+                    Log.message(.verbose, message: "Thumbnail: \(thumbnail ?? "none")")
                     listings.append(listing)
                 }
                 completionHandler(listings, nil)

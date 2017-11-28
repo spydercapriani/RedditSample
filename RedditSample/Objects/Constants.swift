@@ -29,6 +29,4 @@ struct RedditConstants {
         
         static let allValues: [Categories] = [top, new, hot, rising, controversial]
     }
-    
-    
 }

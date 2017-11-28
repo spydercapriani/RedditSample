@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import AlamofireImage
 import CleanroomLogger
 
 class MainViewController: UIViewController, ViewModelContainer, canBlockView {
@@ -102,17 +103,20 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableConstants.CellIdentifiers.cell.rawValue, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableConstants.CellIdentifiers.cell.rawValue, for: indexPath) as! RedditLinkCell
         let listing = viewModel.getListing(for: indexPath)
         
-        cell.textLabel?.text = listing.title
+        cell.titleLabel.text = listing.title
+        if let urlString = URL(string: listing.thumbnail ?? "") {
+            cell.thumbnailImage.af_setImage(withURL: urlString)
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let listing = viewModel.getListing(for: indexPath)
-        let url = URL(string: listing.link!)!
+        let url = URL(string: listing.link)!
         let svc = SFSafariViewController(url: url)
         present(svc, animated: true, completion: nil)
     }

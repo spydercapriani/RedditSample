@@ -32,7 +32,7 @@ class ListingsViewModel: ViewModel {
             if hasErrors {
                 Log.value(.error, value: errors)
             }
-            Log.value(.debug, value: self.listings)
+            Log.message(.info, message: "Fetched all links for /r/\(self.subreddit)")
             completionHandler()
         })
     }
@@ -43,9 +43,9 @@ class ListingsViewModel: ViewModel {
     ///
     /// - Parameter indexPath: Tableview Index Path
     /// - Returns: Reddit Listing
-    func getListing(for indexPath: IndexPath) -> (title: String?, link: String?) {
+    func getListing(for indexPath: IndexPath) -> RedditListing {
         let category = RedditConstants.Categories.allValues[indexPath.section]
         let listing: RedditListing? = listings[category]?[indexPath.row]
-        return (listing?.title, listing?.link)
+        return (listing!.title, listing!.link, listing?.thumbnail)
     }
 }

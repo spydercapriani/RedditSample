@@ -8,4 +8,4 @@
 
 import Foundation
 
-typealias RedditListing = (title: String, link: String)
+typealias RedditListing = (title: String, link: String, thumbnail: String?)

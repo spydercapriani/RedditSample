@@ -1,18 +1,22 @@
 PODS:
   - Alamofire (4.5.1)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
   - CleanroomLogger (5.1.1)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireImage
   - CleanroomLogger
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   CleanroomLogger: d921cc92d8e89c067653c0700b74a96b4e07fdab
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: a5d2e7d48d3e8214bea8b0dd24123aee0f18f8c6
+PODFILE CHECKSUM: aca9c7fcaa138b731d22fabc8cfdef3214f8bff1
 
 COCOAPODS: 1.3.1
